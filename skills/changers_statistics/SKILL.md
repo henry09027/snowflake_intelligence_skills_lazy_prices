@@ -57,7 +57,7 @@ Return whatever rows were produced and state the actual count in one short line 
 
 ---
 
-## ❌ Do Not
+## ❌ DOs and DON'Ts
 
 1. Do **not** re-create, alter, or replace the procedure from within this skill. The procedure is managed and deployed out-of-band; the skill is a pure consumer.
 2. Do **not** inline the ranking SQL as a substitute for the `CALL`. The point of the procedure is that filters, ordering, and the row limit are defined once, server-side.
@@ -67,7 +67,7 @@ Return whatever rows were produced and state the actual count in one short line 
 6. Do **not** re-sort the result client-side. The procedure already orders by `LM_COSINE_SIMILARITY ASC, COMPANYID ASC` — keep that order.
 7. Do **not** interpret a low cosine similarity as a directional signal (bullish/bearish). It only flags magnitude of change.
 8. Do **not** silently fall back to a different year if `{YEAR}` returns fewer than 20 rows — return whatever rows match and say so in one line.
-9. **Do not plot any charts**, keep the output clean and professional.
-10. **Do display the required table**, as required above in procedure step 2.
+9. Do **not** plot any charts, keep the output clean and professional.
+10. **Do** display the required table, as required above in procedure step 2.
 
 ---
