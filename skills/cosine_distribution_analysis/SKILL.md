@@ -54,6 +54,5 @@ State (i) total filing count for the year, (ii) the shape of the distribution (w
 2. **Do not inline the bucket-logic SQL** as a substitute for the `CALL`. The point of the procedure is that buckets and filters are defined once, server-side — ad-hoc SQL defeats reproducibility.
 3. **Do not append a `LIMIT`** to the `CALL`. The procedure already returns at most 8 rows per year.
 4. **Do not lowercase or quote-wrap column names** in display. Preserve Snowflake-default UPPERCASE identifiers.
-5. **Do not produce any chart, plot, histogram, bar chart, distribution plot, or other visualisation** — neither inline, nor as an artifact, nor by invoking any visualisation tool. The deliverable is the table plus the ≤ 4-sentence narrative. Nothing else.
 
 ---
