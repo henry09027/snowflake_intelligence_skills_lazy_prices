@@ -48,11 +48,12 @@ State (i) total filing count for the year, (ii) the shape of the distribution (w
 
 ---
 
-## ❌ DO NOT
+## ❌ DOs and DON'Ts
 
 1. **Do not re-create, alter, or replace the procedure** from within this skill. The procedure is managed and deployed out-of-band; the skill is a pure consumer.
 2. **Do not inline the bucket-logic SQL** as a substitute for the `CALL`. The point of the procedure is that buckets and filters are defined once, server-side — ad-hoc SQL defeats reproducibility.
 3. **Do not append a `LIMIT`** to the `CALL`. The procedure already returns at most 8 rows per year.
 4. **Do not lowercase or quote-wrap column names** in display. Preserve Snowflake-default UPPERCASE identifiers.
-
+5. **Do not plot any charts**, keep the output clean and professional.
+6. **Do display the table and bullet point narratives**, as required above in procedure step 2 and 3.
 ---
