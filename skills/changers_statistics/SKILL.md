@@ -67,4 +67,7 @@ Return whatever rows were produced and state the actual count in one short line 
 6. Do **not** re-sort the result client-side. The procedure already orders by `LM_COSINE_SIMILARITY ASC, COMPANYID ASC` — keep that order.
 7. Do **not** interpret a low cosine similarity as a directional signal (bullish/bearish). It only flags magnitude of change.
 8. Do **not** silently fall back to a different year if `{YEAR}` returns fewer than 20 rows — return whatever rows match and say so in one line.
-9. Do **not** output anything other than the required table (and the one-line short-row notice if applicable). Keep it clean and professional.
+9. **Do not plot any charts**, keep the output clean and professional.
+10. **Do display the required table**, as required above in procedure step 2.
+
+---
