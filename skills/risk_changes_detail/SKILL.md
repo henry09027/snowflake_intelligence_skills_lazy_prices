@@ -29,7 +29,7 @@ The procedure does the diff. This skill parses the output and renders it for the
 ### 1. Call the stored procedure
 
 ```sql
-CALL QRSLLM_POC_DB.HENRY_SCHEMA.SP_RISK_FACTOR_DIFF({COMPANY_ID}, {YEAR});
+CALL QRSLLM_POC_DB.LAZY_PRICES_DECLARATIVE_SHARE_BETA.SP_RISK_FACTOR_DIFF({COMPANY_ID}, {YEAR});
 ```
 
 Do not pass a third argument — the default `claude-haiku-4-5` is the sanctioned model.
@@ -65,9 +65,9 @@ For each category, pick **one** key sentence that best represents the theme. Pre
 
 ### 5. Render the subtle changes as a table
 
-For Subtle Changes, do not categorize. Render the (up to 5) bullets directly as a markdown table with four columns: **Risk Heading**, **Prior Year**, **Current Year**, **Why it matters**.
+For Subtle Changes, do not categorize. Render the (up to 5) bullets directly as a markdown table with four rows: **Risk Heading**, **Prior Year**, **Current Year**, **Why it matters**.
 
-In the Prior Year and Current Year columns, **bold the specific words that changed** using `**…**`. Apply bolding only to the tokens that differ between the two excerpts — not the whole phrase. Keep each excerpt ≤ 25 words; trim with `…`.
+In the Prior Year and Current Year rows, **bold the specific words that changed** using `**…**`. Apply bolding only to the tokens that differ between the two excerpts — not the whole phrase. Keep each excerpt ≤ 25 words; trim with `…`.
 
 ---
 
@@ -88,10 +88,10 @@ Render inline markdown:
 
 #### Subtle Changes in Existing Risks
 
-| Risk Heading | Prior Year | Current Year | Why it matters |
-|---|---|---|---|
-| {heading} | …**{old phrase}**… | …**{new phrase}**… | {one-sentence rationale} |
-| … | … | … | … |
+| Risk Heading | {heading} |---|---|
+| Prior Year | …**{old phrase}**… |---|---|
+| Current Year | …**{new phrase}**… |---|---|
+| Why it matters | {one-sentence rationale} |---|---|
 
 **Net shift:** {one sentence — dominant added theme vs dominant removed theme}.
 ```
@@ -113,7 +113,7 @@ If a company name is already established in the surrounding chat (e.g. selected 
 2. Do **not** fabricate quotes or merge bullets. Every key sentence and every table row traces to exactly one bullet in the procedure output.
 3. Do **not** bold entire excerpts in the Subtle Changes table — bold only the differing tokens. If the bolding covers more than half the cell, you are over-bolding.
 4. Do **not** categorize Subtle Changes. The table is the entire treatment.
-5. Do **not** exceed 7 categories per side or 5 rows in the subtle changes table.
+5. Do **not** exceed 7 categories per side or 5 cases in the subtle changes table.
 6. Do **not** query the underlying view, re-fetch filing texts, or enrich with cosine similarity or token counts. The procedure is the only sanctioned access path.
 7. Do **not** retry the procedure with a different model unless the PM explicitly asks.
 
